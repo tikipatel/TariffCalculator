@@ -12,5 +12,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build App
-      run: xcodebuild -project "TariffCalculator.xcodeproj" -scheme TariffCalculator -destination "generic/platform=i0S" -configuration Release build CODE_SIGNING_ALLOWED=NO
+      run: xcodebuild -project "TariffCalculator/TariffCalculator.xcodeproj" -scheme TariffCalculator -destination "generic/platform=i0S" -configuration Release build CODE_SIGNING_ALLOWED=NO
       
