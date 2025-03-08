@@ -1,0 +1,16 @@
+name: Xcodebuild
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build App
+      run: xcodebuild -project "TariffCalculator.xcodeproj" -scheme TariffCalculator -destination "generic/platform=i0S" -configuration Release build CODE_SIGNING_ALLOWED=NO
+      
