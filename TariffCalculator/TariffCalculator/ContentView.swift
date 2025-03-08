@@ -26,7 +26,11 @@ struct ContentView: View {
     })
     .popover(isPresented: .constant(false)) {
       VStack {
-        Text("Yes, you have tariff")
+        if Int.random(in: 0..<100) % 2 == 0 {
+          Text("Yes, you have tariff")
+        } else {
+          Text("No, you don't have tariff")
+        }
       }
     }
   }
