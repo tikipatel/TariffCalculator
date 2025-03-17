@@ -2,21 +2,25 @@ name: Append PR Link to Description
 
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened]
 
 jobs:
   append-pr-link:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
-      
-      - name: Append PR link to description
-        uses: chabroA/action-append-pr-description@master
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          auth: ${{ secrets.GITHUB_TOKEN }}
-          repo: ${{ github.event.repository.name }}
-          owner: ${{ github.repository_owner }}
-          pr: ${{ github.event.number }}
-          url: "https://github.com/${{ github.repository }}/pull/${{ github.event.number }}"
-          message: "PR Link:"
+          node-version: '16'
+          
+      - name: Install dependencies
+        run: npm install @actions/core @actions/github
+        
+      - name: Append PR Link
+        uses: ./.github/actions/append-pr-link
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
