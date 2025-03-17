@@ -1,0 +1,26 @@
+name: Append PR Link to Description
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  append-pr-link:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          
+      - name: Install dependencies
+        run: npm install @actions/core @actions/github
+        
+      - name: Append PR Link
+        uses: ./.github/actions/append-pr-link
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

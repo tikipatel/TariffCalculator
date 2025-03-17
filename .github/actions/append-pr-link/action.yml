@@ -1,0 +1,9 @@
+name: 'Append PR Link to Description'
+description: 'Appends the PR link to the end of the pull request description if not already present'
+inputs:
+  github-token:
+    description: 'GitHub token'
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'
