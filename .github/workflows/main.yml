@@ -1,0 +1,22 @@
+name: Append PR Link to Description
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  append-pr-link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Append PR link to description
+        uses: chabroA/action-append-pr-description@master
+        with:
+          auth: ${{ secrets.GITHUB_TOKEN }}
+          repo: ${{ github.event.repository.name }}
+          owner: ${{ github.repository_owner }}
+          pr: ${{ github.event.number }}
+          url: "https://github.com/${{ github.repository }}/pull/${{ github.event.number }}"
+          message: "PR Link:"
