@@ -16,13 +16,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-          
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install poetry
-          poetry install --no-interaction --all-extras
-          poetry add requests
+          pip install requests
 
       - name: Generate PR link and comment
         env:
