@@ -2,7 +2,7 @@ name: Append PR Link to PR
 
 on:
   pull_request:
-    types: [opened, synchronize, edited, reopened]
+    types: [opened, edited, reopened]
     branches: [main]
 
 jobs:
