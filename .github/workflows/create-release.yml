@@ -15,7 +15,7 @@ jobs:
 
       - name: Run Release Process Script
         run: |
-          chmod +x ./scripts/release_process.sh
-          ./scripts/release_process.sh
+          chmod +x ./scripts/create_release.sh
+          ./scripts/create_release.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
