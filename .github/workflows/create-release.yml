@@ -1,0 +1,21 @@
+name: Create Release Branch and Update Version
+
+on:
+  schedule:
+    # Runs at 04:00 UTC on Friday (9:00 PM Pacific on Thursday)
+    - cron: '0 4 * * 5'
+  workflow_dispatch:
+
+jobs:
+  create_release_and_update_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Release Process Script
+        run: |
+          chmod +x ./scripts/release_process.sh
+          ./scripts/release_process.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
