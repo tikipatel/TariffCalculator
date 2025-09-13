@@ -13,7 +13,7 @@ BRANCH_NAME="release/$RELEASE_VERSION"
 
 # Version for next week's main branch update (date of the next Thursday)
 # NOTE: This will only work on GNU/Linux systems; when we move to Buildkite, we should revisit this
-NEXT_VERSION="2.$(date -d "next Thursday" +'%y%m%d_%H%M%S').0"
+NEXT_VERSION="2.$(date -d "next Thursday" +'%y%m%d%T').0"
 
 echo "--- Release Information ---"
 echo "Release Branch Name: $BRANCH_NAME"
@@ -36,7 +36,7 @@ git checkout main
 
 # --- 5. Update Version on Main ---
 echo "Step 3: Updating version on main to $NEXT_VERSION."
-make version $NEXT_VERSION
+# make version $NEXT_VERSION
 echo "$NEXT_VERSION" >> "versions.txt"
 
 # --- 6. Commit and Push Update to Main ---
